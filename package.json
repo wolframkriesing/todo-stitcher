@@ -1,6 +1,6 @@
 {
   "name": "todo-stitcher",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Checks a list of to do items to determine if the project is ready for release.",
   "main": "index.js",
   "bin": "bin/index.js",
