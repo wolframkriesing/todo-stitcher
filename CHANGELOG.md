@@ -9,10 +9,10 @@
         show a warning and a hint when not finding the appropriate string
     - [x] prevent a parsing error to throw    
   - [x] to give the structure of the parsed text a meaning make it typed a bit better
-- [ ] document usage in README
 
 # version 6.0
 - [ ] allow `# v` for a version headline too
+- [ ] document usage in README
 
 # version 5.0
 - [x] made it todo-stitcher
