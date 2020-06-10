@@ -26,15 +26,22 @@ const todoItems = (content) => {
  * @returns {import("./parse-changelog").TodoItems}
  */
 export const parseChangelog = (changelogContent) => {
-  const hasContent = !!changelogContent.trim();
-  if (!hasContent) {
+  const changelogIsEmpty = !Boolean(changelogContent.trim());
+  if (changelogIsEmpty) {
     return { version: '-1', items: [] };
   }
+
+  const changelogContainsNoVersionHeadline = () => {
+    const content = '\n' + changelogContent;
+    const newLineAndNewVersionString = '\n' + LINE_START_FOR_NEW_VERSION;
+    return !content.includes(newLineAndNewVersionString)
+  }
+  if (changelogContainsNoVersionHeadline()) {
+    return { version: '-1', items: [] };
+  }
+
   const content = '\n' + changelogContent;
   const newLineAndNewVersionString = '\n' + LINE_START_FOR_NEW_VERSION;
-  if (!content.includes(newLineAndNewVersionString)) {
-    return { version: '-1', items: [] };
-  }
   const versions = content.split(newLineAndNewVersionString);
   const firstVersionParagraph = versions[1];
   const version = firstVersionParagraph.split('\n')[0];
