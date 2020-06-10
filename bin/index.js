@@ -1,4 +1,4 @@
-#!/usr/bin/env node -r esm
+#!/usr/bin/env node
 import * as fs from 'fs';
 import * as path from 'path';
 import { parseChangelog, LINE_START_FOR_TODO } from '../src/parse-changelog.js';
