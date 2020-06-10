@@ -8,5 +8,5 @@
     "noUnusedLocals": true,
     "strict": true
   },
-  "include": ["typings", "**/*.js"]
+  "include": ["bin", "src"]
 }
