@@ -23,20 +23,30 @@ const todoItems = (content) => {
 
 /**
  * @param {string} changelogContent
+ * @returns {boolean}
+ */
+const changelogIsEmpty = (changelogContent) => !Boolean(changelogContent.trim());
+
+/**
+ * @param {string} changelogContent
+ * @return {boolean}
+ */
+const changelogMissesVersionHeadline = (changelogContent) => {
+  const content = '\n' + changelogContent;
+  const newLineAndNewVersionString = '\n' + LINE_START_FOR_NEW_VERSION;
+  return !content.includes(newLineAndNewVersionString)
+}
+
+/**
+ * @param {string} changelogContent
  * @returns {import("./parse-changelog").TodoItems}
  */
 export const parseChangelog = (changelogContent) => {
-  const changelogIsEmpty = !Boolean(changelogContent.trim());
-  if (changelogIsEmpty) {
+  if (changelogIsEmpty(changelogContent)) {
     return { version: '-1', items: [] };
   }
 
-  const changelogContainsNoVersionHeadline = () => {
-    const content = '\n' + changelogContent;
-    const newLineAndNewVersionString = '\n' + LINE_START_FOR_NEW_VERSION;
-    return !content.includes(newLineAndNewVersionString)
-  }
-  if (changelogContainsNoVersionHeadline()) {
+  if (changelogMissesVersionHeadline(changelogContent)) {
     return { version: '-1', items: [] };
   }
 
