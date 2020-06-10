@@ -2,7 +2,9 @@ import * as assert from 'assert';
 import { parseChangelog } from './parse-changelog.js';
 
 const echo = console.log;
+/** @param s {string} */
 const echo1 = s => echo('  ' + s);
+/** @param s {string} */
 const echo2 = s => echo1('  ' + s);
 
 echo('Parse a CHANGELOG.md');
